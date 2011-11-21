@@ -33,6 +33,8 @@ void CWndLoadPicture::OnDraw()
 	if( m_pSprite )
 	{
 		m_pSprite->Render((float)m_rcAbsWnd.left,(float)m_rcAbsWnd.top);
+		//m_pSprite2->Render((float)m_rcAbsWnd.left + 50,(float)m_rcAbsWnd.top + 50);
+		
 	}
 	CWndBase::OnDraw();
 }
@@ -65,6 +67,10 @@ void CWndLoadPicture::ResetRes( const char* pPath, bool bDrawSprite, int ptDrawX
 		if( !m_pSprite )
 		{
 			m_pSprite = new hgeSprite( m_Texture, (float)xStart, (float)yStart, (float)cx, (float)cy );
+			m_pSprite->SetZ(0.5);
+			HTEXTURE Texture = m_pDevice->hge->Texture_Load( "pngshow.png" );
+// 			m_pSprite2 = new hgeSprite( Texture, (float)xStart, (float)yStart, 15, 15 );
+// 			m_pSprite2->SetZ(0.5);
 		}
 		else
 		{
