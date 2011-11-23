@@ -44,6 +44,39 @@ CWndBase::CWndBase(void)
 
 CWndBase::~CWndBase(void)
 {
+	CWndBase* pChildTemp = NULL;
+	while ( m_listChildren.size() )
+	{
+		pChildTemp = m_listChildren.back();
+		m_listChildren.pop_back();
+		if( pChildTemp == m_pWndCursorInLast )
+		{
+			m_pWndCursorInLast = NULL;
+		}
+
+		if( pChildTemp != this )
+		{
+			delete pChildTemp;
+			pChildTemp = NULL;
+		}
+	}
+	while ( m_listChildrenDestroy.size() )
+	{
+		pChildTemp = m_listChildrenDestroy.back();
+		m_listChildrenDestroy.pop_back();
+
+		if( pChildTemp == m_pWndCursorInLast )
+		{
+			m_pWndCursorInLast = NULL;
+		}
+		if( pChildTemp != this )
+		{
+			m_listChildrenDestroy.remove( pChildTemp );
+			delete pChildTemp;
+			pChildTemp = NULL;
+		}
+	}
+	m_listChildren.clear();
 }
 
 bool CWndBase::Create( int x, int y, int cx, int cy, CWndBase* pParent, int nID )
