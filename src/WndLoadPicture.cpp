@@ -2,6 +2,7 @@
 #include <hge.h>
 #include <hgesprite.h>
 #include "HGEDevice.h"
+#include "ResMgr.h"
 CWndLoadPicture::CWndLoadPicture(void):m_pSprite(NULL)
 {
 	m_bNeedMouseInput = false;
@@ -33,7 +34,6 @@ void CWndLoadPicture::OnDraw()
 	if( m_pSprite )
 	{
 		m_pSprite->Render((float)m_rcAbsWnd.left,(float)m_rcAbsWnd.top);
-		//m_pSprite2->Render((float)m_rcAbsWnd.left + 50,(float)m_rcAbsWnd.top + 50);
 		
 	}
 	CWndBase::OnDraw();
@@ -47,7 +47,8 @@ void CWndLoadPicture::ResetRes( const char* pPath, bool bDrawSprite, int ptDrawX
 	int cy = 0;
 	if( m_pDevice && m_pDevice->hge )
 	{
-		m_Texture = m_pDevice->hge->Texture_Load( pPath );
+		//m_Texture = m_pDevice->hge->Texture_Load( pPath );
+		m_Texture = g_ResMgr.GetHTexture( pPath );
 
 		if( bDrawSprite || (m_Texture == 0) )
 		{
@@ -68,9 +69,6 @@ void CWndLoadPicture::ResetRes( const char* pPath, bool bDrawSprite, int ptDrawX
 		{
 			m_pSprite = new hgeSprite( m_Texture, (float)xStart, (float)yStart, (float)cx, (float)cy );
 			m_pSprite->SetZ(0.5);
-			HTEXTURE Texture = m_pDevice->hge->Texture_Load( "pngshow.png" );
-// 			m_pSprite2 = new hgeSprite( Texture, (float)xStart, (float)yStart, 15, 15 );
-// 			m_pSprite2->SetZ(0.5);
 		}
 		else
 		{
@@ -86,7 +84,7 @@ void CWndLoadPicture::SetFlip(bool bX,bool bY,bool bHotSpot )
 	}
 }
 
-void CWndLoadPicture::SetColor( DWORD col, int i/*= -1 */ )
+void CWndLoadPicture::SetColor( DWORD col, int i )
 {
 	if( m_pSprite )
 	{

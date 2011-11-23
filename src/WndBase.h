@@ -86,7 +86,6 @@ protected:
 
 	SIZE m_size;
 
-	static HGEDevice* m_pDevice;
 
 	static bool m_bLPressed;
 	static bool m_bLReleased; 
@@ -107,6 +106,7 @@ public:
 	static POINT m_ptMouse;
 	static hgeFont*		m_pHgeFont;
 	bool	m_bDrawBox;
+	static HGEDevice* m_pDevice;
 
 private:
 	CWndBase*		m_pTabWnd;
