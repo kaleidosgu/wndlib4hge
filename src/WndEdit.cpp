@@ -119,6 +119,7 @@ void CWndEdit::SetText( const char* pText )
 		m_strShowText = temp;
 	}
 	m_pStatic->SetText( m_strShowText.c_str() );
+	m_nCaretPos = (int)m_pStatic->GetStringWidth( m_strShowText.c_str(), true );;
 }
 
 bool CWndEdit::CreateNoFont( int x, int y, int cx, int cy, CWndBase* pParent, int nID )
