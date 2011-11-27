@@ -20,6 +20,7 @@ public:
 	const char* GetText() const;
 	void SetMask( const char* pMask );
 	virtual int OnLButtonDown(const UINT &nFlags,const POINT &point);
+	void SetCaretColor( DWORD color );
 protected:
 	void DrawCaret();
 	virtual void OnSetFocus();
@@ -34,4 +35,5 @@ private:
 	std::string m_strText;
 	std::string m_strShowText;
 	std::string m_strMask;
+	DWORD		m_crCaret;
 };

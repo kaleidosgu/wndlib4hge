@@ -6,6 +6,7 @@
 #include "HGEDevice.h"
 #include <hgefont.h>
 CWndEdit::CWndEdit(void):m_pStatic(NULL),m_bDrawCaret(false),m_nCaretPos(0),m_bNotifyParent(false)
+,m_crCaret(0xFFFFFFFF)
 {
 	m_fCurTime = 0.f;
 	SetRectEmpty(&m_rcCaret);
@@ -97,9 +98,9 @@ void CWndEdit::DrawCaret()
 		if( m_pDevice )
 		{
 			//SColor rc(255,0,0,0);
-			m_pDevice->hge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left) ,(float)(m_rcAbsWnd.top + 18),0xFFFFFFFF);
-			m_pDevice->hge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left + 1),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left + 1),(float)(m_rcAbsWnd.top + 18),0xFFFFFFFF);
-			m_pDevice->hge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left + 2),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left + 2),(float)(m_rcAbsWnd.top + 18),0xFFFFFFFF);
+			m_pDevice->hge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left) ,(float)(m_rcAbsWnd.top + 18),m_crCaret);
+			m_pDevice->hge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left + 1),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left + 1),(float)(m_rcAbsWnd.top + 18),m_crCaret);
+			m_pDevice->hge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left + 2),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left + 2),(float)(m_rcAbsWnd.top + 18),m_crCaret);
 		}
 	}
 }
@@ -158,4 +159,9 @@ void CWndEdit::OnSetFocus()
 {
 	m_bDrawCaret = true;
 	//m_fCurTime = 0.6f;
+}
+
+void CWndEdit::SetCaretColor( DWORD color )
+{
+	m_crCaret = color;
 }
