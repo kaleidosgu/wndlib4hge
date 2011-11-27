@@ -348,6 +348,7 @@ int CWndBase::OnMouseMove( const UINT &nFlags,const POINT &point )
 
 int CWndBase::OnMouseMoveOut( const UINT &nFlags,const POINT &point )
 {
+	SendMessageToParent(WND_MOVEOUT,m_nDlgID);
 	return WND_RESULT_NO;
 }
 
@@ -358,6 +359,7 @@ bool CWndBase::IsWindowEnabled()
 
 int CWndBase::OnMouseMoveIn( const UINT &nFlags,const POINT &point )
 {
+	SendMessageToParent(WND_MOVEON,m_nDlgID);
 	return WND_RESULT_NO;
 }
 

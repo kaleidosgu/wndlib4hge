@@ -9,6 +9,8 @@ enum WND_UI_EVENT
 {
 	WND_CLICK,
 	WND_ONCHAR,
+	WND_MOVEON,
+	WND_MOVEOUT
 };
 struct ResStruct
 {
