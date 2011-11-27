@@ -4,6 +4,7 @@
 #include "HGEDevice.h"
 #include "ResMgr.h"
 CWndLoadPicture::CWndLoadPicture(void):m_pSprite(NULL)
+,m_fhScale(1.0f),m_fvScale(1.0f)
 {
 	m_bNeedMouseInput = false;
 }
@@ -33,7 +34,9 @@ void CWndLoadPicture::OnDraw()
 	DrawBox();
 	if( m_pSprite )
 	{
+		m_pDevice->hge->Gfx_SetTransform((float)m_rcAbsWnd.left,(float)m_rcAbsWnd.top,0,0,0,m_fhScale,m_fvScale);
 		m_pSprite->Render((float)m_rcAbsWnd.left,(float)m_rcAbsWnd.top);
+		m_pDevice->hge->Gfx_SetTransform(0,0,0,0,0,1,1);
 		
 	}
 	CWndBase::OnDraw();
@@ -98,4 +101,10 @@ void CWndLoadPicture::SetBlendMode( int blend )
 	{
 		m_pSprite->SetBlendMode( blend );
 	}
+}
+
+void CWndLoadPicture::SetZoom( float hScale, float vScale )
+{
+	m_fhScale = hScale;
+	m_fvScale = vScale;
 }
