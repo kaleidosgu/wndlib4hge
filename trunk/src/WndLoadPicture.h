@@ -16,10 +16,13 @@ public:
 	void SetFlip(bool bX,bool bY,bool bHotSpot = false );
 	void SetColor( DWORD col, int i= -1 );
 	void SetBlendMode(int blend);
+	void SetZoom( float hScale, float vScale );
 private:
 	HTEXTURE m_Texture;
 	hgeSprite* m_pSprite;
 	hgeSprite* m_pSprite2;
+	float m_fhScale;
+	float m_fvScale;
 };
 
 

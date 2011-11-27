@@ -108,7 +108,7 @@ void CWndButton::SetBtnState( int nBtnState )
 void CWndButton::OnDraw()
 {
 	m_pPicture->OnDraw();
-	//CWndBase::OnDraw();
+	CWndBase::OnDraw();
 }
 
 void CWndButton::AddRes( int x, int y, int cx, int cy )
