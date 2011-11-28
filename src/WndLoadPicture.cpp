@@ -108,3 +108,11 @@ void CWndLoadPicture::SetZoom( float hScale, float vScale )
 	m_fhScale = hScale;
 	m_fvScale = vScale;
 }
+
+void CWndLoadPicture::SetHotSpot( float x, float y )
+{
+	if( m_pSprite )
+	{
+		m_pSprite->SetHotSpot( x, y );
+	}
+}

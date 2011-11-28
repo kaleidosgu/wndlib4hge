@@ -17,6 +17,7 @@ public:
 	void SetColor( DWORD col, int i= -1 );
 	void SetBlendMode(int blend);
 	void SetZoom( float hScale, float vScale );
+	void SetHotSpot( float x, float y );
 private:
 	HTEXTURE m_Texture;
 	hgeSprite* m_pSprite;
