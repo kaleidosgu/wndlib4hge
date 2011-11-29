@@ -11,6 +11,7 @@ public:
 	virtual ~HGEDevice(void);
 	virtual void RenderLine( int x1, int y1, int x2, int y2,unsigned int cr );
 	virtual void Draw2DRect( SColor color, RECT rcToDraw );
+	virtual void Draw2DRectDr(DWORD dr, RECT rcToDraw );
 
 	HGE* hge;
 private:
