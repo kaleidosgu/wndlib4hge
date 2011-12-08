@@ -56,7 +56,11 @@ void HGEDevice::Init( HWND wnid )
 	m_pHge->System_SetState(HGE_DONTSUSPEND,true); 
 	m_pHge->System_SetState(HGE_ZBUFFER,true);
 
+#ifndef HGE_NO_MODIFY
+	if(m_pHge->System_Initiate())
+#else
 	if(m_pHge->System_Initiate(wnid))
+#endif
 	{
 		m_pHge->System_Start();
 	}
@@ -75,7 +79,11 @@ void HGEDevice::Gfx_EndScene()
 
 void HGEDevice::Gfx_EndScene( HWND hwnd )
 {
+#ifndef HGE_NO_MODIFY
+	m_pHge->Gfx_EndScene();
+#else
 	m_pHge->Gfx_EndScene(hwnd);
+#endif
 }
 
 void HGEDevice::Release()
