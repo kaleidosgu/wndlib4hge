@@ -59,11 +59,6 @@ void CWndDesktop::OnUpdate( float ft )
 			{
 				OnKeyboardMessage( m_event );
 			}
-			float fx = 0;
-			float fy = 0;
-			g_pDevice->m_pHge->Input_GetMousePos(&fx,&fy);
-			m_ptMouse.x = (LONG)fx;
-			m_ptMouse.y = (LONG)fy;
 
 			//m_bLPressed  = g_pDevice->m_pHge->Input_KeyDown(HGEK_LBUTTON);
 			m_bLPressed = g_pDevice->m_pHge->Input_GetKeyState(HGEK_LBUTTON);
