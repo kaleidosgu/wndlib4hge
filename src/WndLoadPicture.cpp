@@ -2,7 +2,6 @@
 #include <hge.h>
 #include <hgesprite.h>
 #include "HGEDevice.h"
-#include "ResMgr.h"
 CWndLoadPicture::CWndLoadPicture(void):m_pSprite(NULL)
 ,m_fhScale(1.0f),m_fvScale(1.0f)
 {
@@ -18,7 +17,7 @@ CWndLoadPicture::~CWndLoadPicture(void)
 bool CWndLoadPicture::Create( int x, int y, const char* pPath, CWndBase* pParent, int nID, bool bDrawSprite, int ptDrawX, int ptDrawY, int ptDrawW, int ptDrawH )
 {
 	bool bRes = false;
-	if( m_pDevice ) 
+	if( g_pDevice ) 
 	{
 		ResetRes(pPath,bDrawSprite,ptDrawX,ptDrawY,ptDrawW,ptDrawH);
 		CWndBase::Create( x,y,m_size.cx,m_size.cy,pParent,nID);
@@ -34,9 +33,9 @@ void CWndLoadPicture::OnDraw()
 	DrawBox();
 	if( m_pSprite )
 	{
-		m_pDevice->hge->Gfx_SetTransform((float)m_rcAbsWnd.left,(float)m_rcAbsWnd.top,0,0,0,m_fhScale,m_fvScale);
+		g_pDevice->m_pHge->Gfx_SetTransform((float)m_rcAbsWnd.left,(float)m_rcAbsWnd.top,0,0,0,m_fhScale,m_fvScale);
 		m_pSprite->Render((float)m_rcAbsWnd.left,(float)m_rcAbsWnd.top);
-		m_pDevice->hge->Gfx_SetTransform(0,0,0,0,0,1,1);
+		g_pDevice->m_pHge->Gfx_SetTransform(0,0,0,0,0,1,1);
 		
 	}
 	CWndBase::OnDraw();
@@ -48,10 +47,10 @@ void CWndLoadPicture::ResetRes( const char* pPath, bool bDrawSprite, int ptDrawX
 	int yStart = 0;
 	int cx = 0;
 	int cy = 0;
-	if( m_pDevice && m_pDevice->hge )
+	if( g_pDevice && g_pDevice->m_pHge )
 	{
-		//m_Texture = m_pDevice->hge->Texture_Load( pPath );
-		m_Texture = g_ResMgr.GetHTexture( pPath );
+		//m_Texture = g_pDevice->m_pHge->Texture_Load( pPath );
+		m_Texture = g_pDevice->Texture_Load( pPath );
 
 		if( bDrawSprite || (m_Texture == 0) )
 		{
@@ -62,8 +61,8 @@ void CWndLoadPicture::ResetRes( const char* pPath, bool bDrawSprite, int ptDrawX
 		}
 		else
 		{
-			cx = m_pDevice->hge->Texture_GetWidth( m_Texture );
-			cy = m_pDevice->hge->Texture_GetHeight( m_Texture );
+			cx = g_pDevice->m_pHge->Texture_GetWidth( m_Texture );
+			cy = g_pDevice->m_pHge->Texture_GetHeight( m_Texture );
 		}
 
 		SetWindowPos(NULL,0,0,cx,cy,0);

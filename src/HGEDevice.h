@@ -1,6 +1,8 @@
 #pragma once
+#include <map>
 #include "datadefine.h"
 #include <WTypes.h>
+#include <hge.h>
 #include "DllExport.h"
 class HGE;
 class hgeSprite;
@@ -10,10 +12,17 @@ public:
 	HGEDevice(void);
 	virtual ~HGEDevice(void);
 	virtual void RenderLine( int x1, int y1, int x2, int y2,unsigned int cr );
-	virtual void Draw2DRect( SColor color, RECT rcToDraw );
 	virtual void Draw2DRectDr(DWORD dr, RECT rcToDraw );
 
-	HGE* hge;
+	void Init( HWND wnid );
+	void Gfx_BeginScene();
+	void Gfx_EndScene();
+	void Gfx_EndScene( HWND hwnd );
+	void Release();
+	HTEXTURE Texture_Load( const char* pchar );
+
+	HGE* m_pHge;
 private:
-	hgeSprite* m_pSprite;
+	std::map < std::string, HTEXTURE > m_mapTexture;
 };
+extern WNDLIB_EXPORT HGEDevice* g_pDevice;

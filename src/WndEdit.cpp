@@ -95,12 +95,11 @@ void CWndEdit::DrawCaret()
 {
 	if ( m_pWndFocus == this && m_bDrawCaret )
 	{		
-		if( m_pDevice )
+		if( g_pDevice->m_pHge )
 		{
-			//SColor rc(255,0,0,0);
-			m_pDevice->hge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left) ,(float)(m_rcAbsWnd.top + 18),m_crCaret);
-			m_pDevice->hge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left + 1),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left + 1),(float)(m_rcAbsWnd.top + 18),m_crCaret);
-			m_pDevice->hge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left + 2),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left + 2),(float)(m_rcAbsWnd.top + 18),m_crCaret);
+			g_pDevice->m_pHge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left) ,(float)(m_rcAbsWnd.top + 18),m_crCaret);
+			g_pDevice->m_pHge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left + 1),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left + 1),(float)(m_rcAbsWnd.top + 18),m_crCaret);
+			g_pDevice->m_pHge->Gfx_RenderLine((float)(m_nCaretPos + m_rcAbsWnd.left + 2),(float)(m_rcAbsWnd.top + 5),(float)(m_nCaretPos + m_rcAbsWnd.left + 2),(float)(m_rcAbsWnd.top + 18),m_crCaret);
 		}
 	}
 }
