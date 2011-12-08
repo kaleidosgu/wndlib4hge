@@ -106,7 +106,6 @@ public:
 	static POINT m_ptMouse;
 	static hgeFont*		m_pHgeFont;
 	bool	m_bDrawBox;
-	static HGEDevice* m_pDevice;
 
 private:
 	CWndBase*		m_pTabWnd;

@@ -15,7 +15,7 @@ CWndDesktop::~CWndDesktop(void)
 
 void CWndDesktop::OnUpdate( float ft )
 {
-	if( m_pDevice && m_pDevice->hge )
+	if( g_pDevice && g_pDevice->m_pHge )
 	{
 		if ( m_bKeyProcess )
 		{
@@ -25,11 +25,11 @@ void CWndDesktop::OnUpdate( float ft )
 
 		if( !m_bKeyProcess )
 		{
-			int nTempKey = m_pDevice->hge->Input_GetKey();
-			int keychar = m_pDevice->hge->Input_GetChar();
+			int nTempKey = g_pDevice->m_pHge->Input_GetKey();
+			int keychar = g_pDevice->m_pHge->Input_GetChar();
 			if( m_nLastKey > 0 )
 			{
-				bool bKeyUp = m_pDevice->hge->Input_KeyUp(m_nLastKey);
+				bool bKeyUp = g_pDevice->m_pHge->Input_KeyUp(m_nLastKey);
 				if ( bKeyUp )
 				{
 					m_event.type = INPUT_KEYUP;
@@ -43,7 +43,7 @@ void CWndDesktop::OnUpdate( float ft )
 				m_nLastKey = nTempKey;
 				if( m_nLastKey > 0 )
 				{
-					bool bKeyDown = m_pDevice->hge->Input_KeyDown(m_nLastKey);
+					bool bKeyDown = g_pDevice->m_pHge->Input_KeyDown(m_nLastKey);
 					m_event.type = INPUT_KEYDOWN;
 					m_bKeyProcess = true;
 					m_event.key = m_nLastKey;
@@ -61,15 +61,15 @@ void CWndDesktop::OnUpdate( float ft )
 			}
 			float fx = 0;
 			float fy = 0;
-			m_pDevice->hge->Input_GetMousePos(&fx,&fy);
+			g_pDevice->m_pHge->Input_GetMousePos(&fx,&fy);
 			m_ptMouse.x = (LONG)fx;
 			m_ptMouse.y = (LONG)fy;
 
-			//m_bLPressed  = m_pDevice->hge->Input_KeyDown(HGEK_LBUTTON);
-			m_bLPressed = m_pDevice->hge->Input_GetKeyState(HGEK_LBUTTON);
-			m_bLReleased = m_pDevice->hge->Input_KeyUp(HGEK_LBUTTON);
-			m_bRPressed  = m_pDevice->hge->Input_KeyDown(HGEK_RBUTTON);
-			m_bRReleased = m_pDevice->hge->Input_KeyUp(HGEK_RBUTTON);
+			//m_bLPressed  = g_pDevice->m_pHge->Input_KeyDown(HGEK_LBUTTON);
+			m_bLPressed = g_pDevice->m_pHge->Input_GetKeyState(HGEK_LBUTTON);
+			m_bLReleased = g_pDevice->m_pHge->Input_KeyUp(HGEK_LBUTTON);
+			m_bRPressed  = g_pDevice->m_pHge->Input_KeyDown(HGEK_RBUTTON);
+			m_bRReleased = g_pDevice->m_pHge->Input_KeyUp(HGEK_RBUTTON);
 		}
 	}
 	CWndBase::OnUpdate( ft );

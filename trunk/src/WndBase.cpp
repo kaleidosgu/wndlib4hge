@@ -6,7 +6,6 @@
 #include <hgefont.h>
 #include <string>
 #include <algorithm>
-HGEDevice* CWndBase::m_pDevice = NULL;
 
 CWndBase* CWndBase::m_pWndCursorInLast = NULL;
 CWndBase* CWndBase::m_pWndCursorIn = NULL;
@@ -138,7 +137,7 @@ void CWndBase::OnDraw()
 			}
 		}
 		float MouseX,MouseY;
-		m_pDevice->hge->Input_GetMousePos(&MouseX,&MouseY);
+		g_pDevice->m_pHge->Input_GetMousePos(&MouseX,&MouseY);
 
 		bool b = false;
 	}
@@ -163,10 +162,9 @@ void CWndBase::DrawBox()
 		{
 			return;
 		}
-		SColor rc(255,255,255,0);
-		if( m_pDevice )
+		if( g_pDevice )
 		{
-			m_pDevice->Draw2DRect(rc,rcWnd);
+			g_pDevice->Draw2DRectDr(0xffffff00,rcWnd);
 		}
 		//Draw2drectangle()
 	}
@@ -174,7 +172,7 @@ void CWndBase::DrawBox()
 
 void CWndBase::SetDevice( HGEDevice* pDevice )
 {
-	m_pDevice = pDevice;
+	g_pDevice = pDevice;
 }
 
 bool CWndBase::GetWindowRect( LPRECT lpRect ) const
