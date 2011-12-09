@@ -67,6 +67,8 @@ public:
 	int SendMessage( const int& nUIEvent, const int& nID );
 	int SendMessageToParent( const int& nUIEvent, const int& nID );
 
+	void SetEditProcess( bool bProcess );
+
 protected:
 	virtual CWndBase * GetChildWndPtIn(const POINT &pt);
 	void RemoveChildWnd( CWndBase* pChild );
@@ -105,7 +107,10 @@ public:
 	static CWndBase* m_pWndFocus;
 	static POINT m_ptMouse;
 	static hgeFont*		m_pHgeFont;
+	static bool			m_bEditState;
 	bool	m_bDrawBox;
+private:
+	bool	m_bEditProcess;
 
 private:
 	CWndBase*		m_pTabWnd;

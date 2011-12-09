@@ -12,6 +12,7 @@ CWndBase* CWndBase::m_pWndCursorIn = NULL;
 CWndBase* CWndBase::s_pWndLBDown = NULL;
 CWndBase* CWndBase::m_pWndFocus = NULL;
 hgeFont* CWndBase::m_pHgeFont = NULL;
+bool CWndBase::m_bEditState = false;
 
 bool CWndBase::m_bLPressed = false;
 bool CWndBase::m_bLReleased = false;
@@ -22,15 +23,13 @@ POINT CWndBase::m_ptMouse = {0,0};
 
 CWndBase::CWndBase(void)
 :m_nDlgID( 0 ),m_bDrawBox(false),m_bVisible(true),m_bDragWithParent(true),m_pParent(NULL)
-,m_bNeedMouseInput(true)
+,m_bNeedMouseInput(true),m_bEditProcess(true)
 {
 	SetRectEmpty(&m_rcRect);
 	SetRectEmpty(&m_rcClip);
 	SetRectEmpty(&m_rcAbsWnd);	
 	m_size.cx = 0;
 	m_size.cy = 0;
-	m_ptMouse.x = 0;
-	m_ptMouse.y = 0;
 
 	m_bLPressed		= false;
 	m_bLReleased	= false;
@@ -556,7 +555,7 @@ bool CWndBase::IsDragWithParent()
 }
 bool CWndBase::NeedMouseInput()
 {
-	return m_bNeedMouseInput;
+	return m_bNeedMouseInput || ( m_bEditState && m_bEditProcess );
 }
 void CWndBase::SetTabWnd( CWndBase* pTabWnd )
 {
@@ -595,4 +594,9 @@ int CWndBase::SendMessageToParent( const int& nUIEvent, const int& nID )
 void CWndBase::ShowBox( bool bShow )
 {
 	m_bDrawBox = bShow;
+}
+
+void CWndBase::SetEditProcess( bool bProcess )
+{
+	m_bEditProcess = bProcess;
 }
