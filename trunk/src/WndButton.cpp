@@ -18,6 +18,7 @@ bool CWndButton::Create( int x, int y, int cx, int cy,const char* pPath, CWndBas
 	m_strPath = pPath;
 	m_pPicture = new CWndLoadPicture;
 	m_pPicture->Create(0,0,pPath,this,0,false,0,0,0,0);
+	m_pPicture->SetEditProcess( false );
 	return CWndBase::Create(x,y,cx,cy,pParent,nID);
 }
 
