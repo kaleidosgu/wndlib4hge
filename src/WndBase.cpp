@@ -600,3 +600,8 @@ void CWndBase::SetEditProcess( bool bProcess )
 {
 	m_bEditProcess = bProcess;
 }
+
+void CWndBase::SetFont( const char* pChar )
+{
+	m_pHgeFont = new hgeFont(pChar);
+}

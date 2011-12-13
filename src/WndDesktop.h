@@ -16,3 +16,5 @@ private:
 	int m_nLastKey;
 	bool m_bKeyProcess;
 };
+
+extern WNDLIB_EXPORT CWndDesktop* g_pDesktop;

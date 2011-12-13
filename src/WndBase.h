@@ -68,6 +68,7 @@ public:
 	int SendMessageToParent( const int& nUIEvent, const int& nID );
 
 	void SetEditProcess( bool bProcess );
+	static void SetFont( const char* pChar );
 
 protected:
 	virtual CWndBase * GetChildWndPtIn(const POINT &pt);
