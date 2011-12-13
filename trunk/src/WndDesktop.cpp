@@ -2,6 +2,7 @@
 #include "HGEDevice.h"
 #include "wnddatadefine.h"
 #include <hge.h>
+CWndDesktop* g_pDesktop = NULL;
 CWndDesktop::CWndDesktop(void)
 {
 	memset(&m_event,0,sizeof(hgeInputEvent));

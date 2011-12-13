@@ -18,6 +18,8 @@ public:
 	void SetBlendMode(int blend);
 	void SetZoom( float hScale, float vScale );
 	void SetHotSpot( float x, float y );
+public:
+	std::string m_strResPath;
 private:
 	HTEXTURE m_Texture;
 	hgeSprite* m_pSprite;

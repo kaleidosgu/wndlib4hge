@@ -3,7 +3,7 @@
 #include <hgesprite.h>
 #include "HGEDevice.h"
 CWndLoadPicture::CWndLoadPicture(void):m_pSprite(NULL)
-,m_fhScale(1.0f),m_fvScale(1.0f)
+,m_fhScale(1.0f),m_fvScale(1.0f),m_strResPath("")
 {
 	m_bNeedMouseInput = false;
 }
@@ -49,7 +49,6 @@ void CWndLoadPicture::ResetRes( const char* pPath, bool bDrawSprite, int ptDrawX
 	int cy = 0;
 	if( g_pDevice && g_pDevice->m_pHge )
 	{
-		//m_Texture = g_pDevice->m_pHge->Texture_Load( pPath );
 		m_Texture = g_pDevice->Texture_Load( pPath );
 
 		if( bDrawSprite || (m_Texture == 0) )
@@ -63,6 +62,11 @@ void CWndLoadPicture::ResetRes( const char* pPath, bool bDrawSprite, int ptDrawX
 		{
 			cx = g_pDevice->m_pHge->Texture_GetWidth( m_Texture );
 			cy = g_pDevice->m_pHge->Texture_GetHeight( m_Texture );
+		}
+
+		if( m_Texture != 0 )
+		{
+			m_strResPath = pPath;
 		}
 
 		SetWindowPos(NULL,0,0,cx,cy,0);
