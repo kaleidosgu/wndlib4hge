@@ -610,3 +610,8 @@ int CWndBase::GetDlgID() const
 {
 	return m_nDlgID;
 }
+
+CWndBase* CWndBase::GetParent()
+{
+	return m_pParent;
+}
