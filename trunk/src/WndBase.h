@@ -70,6 +70,8 @@ public:
 	void SetEditProcess( bool bProcess );
 	static void SetFont( const char* pChar );
 
+	int GetDlgID() const;
+
 protected:
 	virtual CWndBase * GetChildWndPtIn(const POINT &pt);
 	void RemoveChildWnd( CWndBase* pChild );

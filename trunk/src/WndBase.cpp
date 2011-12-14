@@ -605,3 +605,8 @@ void CWndBase::SetFont( const char* pChar )
 {
 	m_pHgeFont = new hgeFont(pChar);
 }
+
+int CWndBase::GetDlgID() const
+{
+	return m_nDlgID;
+}
