@@ -23,6 +23,7 @@ public:
 
 
 	CWndBase* SetParent( CWndBase* pParent );
+	CWndBase* GetParent();
 	int SetDlgID( int nId );
 	static void SetDevice( HGEDevice* pDevice );
 	bool GetWindowRect( LPRECT lpRect ) const;
