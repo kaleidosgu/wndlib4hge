@@ -73,6 +73,8 @@ public:
 
 	int GetDlgID() const;
 
+	void SetBoxColor( DWORD drColor );
+
 protected:
 	virtual CWndBase * GetChildWndPtIn(const POINT &pt);
 	void RemoveChildWnd( CWndBase* pChild );
@@ -115,6 +117,7 @@ public:
 	bool	m_bDrawBox;
 private:
 	bool	m_bEditProcess;
+	DWORD	m_drBoxColor;
 
 private:
 	CWndBase*		m_pTabWnd;

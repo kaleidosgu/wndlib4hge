@@ -22,6 +22,7 @@ void HGEDevice::RenderLine( int x1, int y1, int x2, int y2,unsigned int cr )
 	m_pHge->Gfx_RenderLine(fx1,fy1,fx2,fy2,cr);
 }
 
+//0xAARRGGBB
 void HGEDevice::Draw2DRectDr( DWORD dwColor, RECT rcToDraw )
 {
 
