@@ -23,7 +23,7 @@ POINT CWndBase::m_ptMouse = {0,0};
 
 CWndBase::CWndBase(void)
 :m_nDlgID( 0 ),m_bDrawBox(false),m_bVisible(true),m_bDragWithParent(true),m_pParent(NULL)
-,m_bNeedMouseInput(true),m_bEditProcess(true)
+,m_bNeedMouseInput(true),m_bEditProcess(true),m_drBoxColor(0xffffffff)
 {
 	SetRectEmpty(&m_rcRect);
 	SetRectEmpty(&m_rcClip);
@@ -163,7 +163,7 @@ void CWndBase::DrawBox()
 		}
 		if( g_pDevice )
 		{
-			g_pDevice->Draw2DRectDr(0xffffff00,rcWnd);
+			g_pDevice->Draw2DRectDr(m_drBoxColor,rcWnd);
 		}
 		//Draw2drectangle()
 	}
@@ -614,4 +614,9 @@ int CWndBase::GetDlgID() const
 CWndBase* CWndBase::GetParent()
 {
 	return m_pParent;
+}
+
+void CWndBase::SetBoxColor( DWORD drColor )
+{
+	m_drBoxColor = drColor;
 }
