@@ -101,7 +101,10 @@ HTEXTURE HGEDevice::Texture_Load( const char* pchar )
 	if( it == m_mapTexture.end() )
 	{
 		hTemp = m_pHge->Texture_Load( strTemp.c_str() );
-		m_mapTexture.insert( make_pair( strTemp, hTemp));
+		if( hTemp != 0 )
+		{
+			m_mapTexture.insert( make_pair( strTemp, hTemp));
+		}
 	}
 	else
 	{
