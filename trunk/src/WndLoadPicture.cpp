@@ -79,6 +79,7 @@ void CWndLoadPicture::ResetRes( const char* pPath, bool bDrawSprite, int ptDrawX
 		else
 		{
 			m_pSprite->SetTextureRect( (float)xStart, (float)yStart, (float)cx, (float)cy );
+			m_pSprite->SetTexture(m_Texture);
 		}
 	}
 }
