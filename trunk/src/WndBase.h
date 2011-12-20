@@ -74,6 +74,7 @@ public:
 	int GetDlgID() const;
 
 	void SetBoxColor( DWORD drColor );
+	virtual int GetWndTyp() const;
 
 protected:
 	virtual CWndBase * GetChildWndPtIn(const POINT &pt);
@@ -104,6 +105,7 @@ protected:
 
 	bool	m_bDragWithParent;
 	bool	m_bNeedMouseInput;
+	int		m_nWndType;
 
 public:
 

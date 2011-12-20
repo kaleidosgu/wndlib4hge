@@ -2,10 +2,12 @@
 #include <hge.h>
 #include <hgesprite.h>
 #include "HGEDevice.h"
+#include "UIDefine.h"
 CWndLoadPicture::CWndLoadPicture(void):m_pSprite(NULL)
 ,m_fhScale(1.0f),m_fvScale(1.0f),m_strResPath("")
 {
 	m_bNeedMouseInput = false;
+	m_nWndType = UI_CREATE_WNDPICTURE;
 }
 
 CWndLoadPicture::~CWndLoadPicture(void)
@@ -69,7 +71,8 @@ void CWndLoadPicture::ResetRes( const char* pPath, bool bDrawSprite, int ptDrawX
 			m_strResPath = pPath;
 		}
 
-		SetWindowPos(NULL,0,0,cx,cy,0);
+		//SetWindowPos(NULL,0,0,cx,cy,0);
+		ResizeWindow(cx,cy);
 
 		if( !m_pSprite )
 		{
