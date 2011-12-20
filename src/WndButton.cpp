@@ -1,5 +1,6 @@
 #include "Wndbutton.h"
 #include "WndLoadPicture.h"
+#include "UIDefine.h"
 CWndButton::CWndButton(void)
 :m_pPicture(NULL),m_nBtnState(-1)
 {
@@ -9,6 +10,7 @@ CWndButton::CWndButton(void)
 	m_nDrawCY = 0;
 
 	m_strPath = "";
+	m_nWndType = UI_CREATE_WNDBUTTON;
 }
 CWndButton::~CWndButton(void)
 {

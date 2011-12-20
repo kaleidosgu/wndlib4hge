@@ -1,10 +1,12 @@
 #include "WndStatic.h"
 #include <hgefont.h>
 #include <string>
+#include "UIDefine.h"
 CWndStatic::CWndStatic(void)
 :m_strText(""),m_nAlign(0),m_crColor(0)
 {
 	m_bNeedMouseInput = false;
+	m_nWndType = UI_CREATE_WNDSTATIC;
 }
 
 CWndStatic::~CWndStatic(void)

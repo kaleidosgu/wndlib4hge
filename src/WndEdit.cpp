@@ -5,6 +5,7 @@
 #include "datadefine.h"
 #include "HGEDevice.h"
 #include <hgefont.h>
+#include "UIDefine.h"
 CWndEdit::CWndEdit(void):m_pStatic(NULL),m_bDrawCaret(false),m_nCaretPos(0),m_bNotifyParent(false)
 ,m_crCaret(0xFFFFFFFF)
 {
@@ -13,6 +14,7 @@ CWndEdit::CWndEdit(void):m_pStatic(NULL),m_bDrawCaret(false),m_nCaretPos(0),m_bN
 	m_strText = "";
 	m_strMask = "";
 	m_strShowText = "";
+	m_nWndType = UI_CREATE_WNDEDIT;
 }
 
 CWndEdit::~CWndEdit(void)

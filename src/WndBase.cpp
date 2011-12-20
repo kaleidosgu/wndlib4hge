@@ -6,6 +6,7 @@
 #include <hgefont.h>
 #include <string>
 #include <algorithm>
+#include "UIDefine.h"
 
 CWndBase* CWndBase::m_pWndCursorInLast = NULL;
 CWndBase* CWndBase::m_pWndCursorIn = NULL;
@@ -23,7 +24,7 @@ POINT CWndBase::m_ptMouse = {0,0};
 
 CWndBase::CWndBase(void)
 :m_nDlgID( 0 ),m_bDrawBox(false),m_bVisible(true),m_bDragWithParent(true),m_pParent(NULL)
-,m_bNeedMouseInput(true),m_bEditProcess(true),m_drBoxColor(0xffffffff)
+,m_bNeedMouseInput(true),m_bEditProcess(true),m_drBoxColor(0xffffffff),m_nWndType(-1)
 {
 	SetRectEmpty(&m_rcRect);
 	SetRectEmpty(&m_rcClip);
@@ -37,6 +38,8 @@ CWndBase::CWndBase(void)
 	m_bRReleased	= false;
 
 	m_pTabWnd = NULL;
+
+	m_nWndType = UI_CREATE_WNDBASE;
 
 }
 
@@ -619,4 +622,9 @@ CWndBase* CWndBase::GetParent()
 void CWndBase::SetBoxColor( DWORD drColor )
 {
 	m_drBoxColor = drColor;
+}
+
+int CWndBase::GetWndTyp() const
+{
+	return m_nWndType;
 }
