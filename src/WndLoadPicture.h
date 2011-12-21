@@ -23,7 +23,6 @@ public:
 private:
 	HTEXTURE m_Texture;
 	hgeSprite* m_pSprite;
-	hgeSprite* m_pSprite2;
 	float m_fhScale;
 	float m_fvScale;
 };
