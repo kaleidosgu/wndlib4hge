@@ -607,6 +607,7 @@ void CWndBase::SetEditProcess( bool bProcess )
 void CWndBase::SetFont( const char* pChar )
 {
 	m_pHgeFont = new hgeFont(pChar);
+	m_pHgeFont->SetScale( 0.5 );
 }
 
 int CWndBase::GetDlgID() const
