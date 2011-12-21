@@ -166,6 +166,10 @@ void CWndBase::DrawBox()
 		}
 		if( g_pDevice )
 		{
+			rcWnd.top -= 1;
+			rcWnd.left -= 1;
+			rcWnd.right += 1;
+			rcWnd.bottom += 1;
 			g_pDevice->Draw2DRectDr(m_drBoxColor,rcWnd);
 		}
 		//Draw2drectangle()
