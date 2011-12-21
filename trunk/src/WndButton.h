@@ -25,6 +25,8 @@ public:
 
 	void AddRes(int x, int y, int cx, int cy );
 	void OnClick();
+
+	virtual void SetDataFile( const char* pFilePath, int xStart, int yStart, int nWidth, int nHeight );
 private:
 	CWndLoadPicture* m_pPicture;
 	std::vector < ResStruct > m_vecRes;

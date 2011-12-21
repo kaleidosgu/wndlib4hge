@@ -110,7 +110,6 @@ void CWndButton::SetBtnState( int nBtnState )
 
 void CWndButton::OnDraw()
 {
-	m_pPicture->OnDraw();
 	CWndBase::OnDraw();
 }
 
@@ -128,4 +127,46 @@ void CWndButton::AddRes( int x, int y, int cx, int cy )
 void CWndButton::OnClick()
 {
 	SendMessageToParent(WND_CLICK,m_nDlgID);
+}
+
+void CWndButton::SetDataFile( const char* pFilePath, int xStart, int yStart, int nWidth, int nHeight )
+{
+	m_vecRes.clear();
+	m_strPath = pFilePath;
+	bool bHorizontal = true;
+	if( nWidth < nHeight )
+	{
+		bHorizontal = false;
+	}
+	int cx = 0;
+	int cy = 0;
+	if( bHorizontal )
+	{
+		cx = nWidth / 4;
+		cy = nHeight;
+	}
+	else
+	{
+		cx = nWidth;
+		cy = nHeight / 4;
+	}
+	for( size_t szIdx = 0; szIdx < 4; szIdx++ )
+	{
+		ResStruct rStruct;
+		if( bHorizontal )
+		{
+			rStruct.x = xStart + szIdx * cx;
+			rStruct.y = yStart;
+		}
+		else
+		{
+			rStruct.x = xStart;
+			rStruct.y = yStart + szIdx * cy;
+		}
+		rStruct.w = cx;
+		rStruct.h = cy;
+		m_vecRes.push_back( rStruct );
+	}
+	ResizeWindow(cx,cy);
+	SetBtnState(normal);
 }
