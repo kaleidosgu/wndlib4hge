@@ -168,5 +168,6 @@ void CWndButton::SetDataFile( const char* pFilePath, int xStart, int yStart, int
 		m_vecRes.push_back( rStruct );
 	}
 	ResizeWindow(cx,cy);
+	SetBtnState(-1);
 	SetBtnState(normal);
 }
