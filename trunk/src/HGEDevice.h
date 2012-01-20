@@ -6,6 +6,8 @@
 #include "DllExport.h"
 class HGE;
 class hgeSprite;
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
 class WNDLIB_EXPORT HGEDevice
 {
 public:
