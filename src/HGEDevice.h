@@ -17,6 +17,8 @@ public:
 	virtual void Draw2DRectDr(DWORD dr, RECT rcToDraw );
 
 	void Init( HWND wnid );
+	void InitState( HWND wnid );
+	void InitSystem( HWND wnid );
 	void Gfx_BeginScene();
 	void Gfx_EndScene();
 	void Gfx_EndScene( HWND hwnd );
