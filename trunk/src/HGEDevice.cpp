@@ -112,3 +112,32 @@ HTEXTURE HGEDevice::Texture_Load( const char* pchar )
 	}
 	return hTemp;
 }
+
+void HGEDevice::InitState( HWND wnid )
+{
+	m_pHge = hgeCreate(HGE_VERSION);
+	m_pHge->System_SetState(HGE_LOGFILE, "HgeDevice.log");
+	m_pHge->System_SetState(HGE_TITLE, "HgeDeviceWnd");
+	m_pHge->System_SetState(HGE_FPS, 100);
+	m_pHge->System_SetState(HGE_USESOUND, true);
+	m_pHge->System_SetState(HGE_WINDOWED, true);
+	m_pHge->System_SetState(HGE_SCREENWIDTH, 800);
+	m_pHge->System_SetState(HGE_SCREENHEIGHT, 600);
+	m_pHge->System_SetState(HGE_SCREENBPP, 32);
+	m_pHge->System_SetState(HGE_SHOWSPLASH,false); 
+	m_pHge->System_SetState(HGE_DONTSUSPEND,true); 
+	m_pHge->System_SetState(HGE_ZBUFFER,true);
+
+}
+
+void HGEDevice::InitSystem( HWND wnid )
+{
+#ifdef HGE_NO_MODIFY
+	if(m_pHge->System_Initiate())
+#else
+	if(m_pHge->System_Initiate(wnid))
+#endif
+	{
+		m_pHge->System_Start();
+	}
+}
