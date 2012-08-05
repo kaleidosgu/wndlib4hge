@@ -3,7 +3,7 @@
 HGEDevice* g_pDevice = NULL;
 #include <string>
 HGEDevice::HGEDevice(void)
-:m_pHge(0)
+:m_pHge(0),m_bInit(false)
 {
 	m_pHge = hgeCreate(HGE_VERSION);
 }
@@ -128,15 +128,18 @@ void HGEDevice::InitState( HWND wnid )
 	m_pHge->System_SetState(HGE_DONTSUSPEND,true); 
 	m_pHge->System_SetState(HGE_ZBUFFER,true);
 
+#ifdef HGE_NO_MODIFY
+	m_bInit = m_pHge->System_Initiate();
+#else
+	m_bInit = m_pHge->System_Initiate(wnid);
+#endif
+	
+
 }
 
-void HGEDevice::InitSystem( HWND wnid )
+void HGEDevice::DeviceStart( HWND wnid )
 {
-#ifdef HGE_NO_MODIFY
-	if(m_pHge->System_Initiate())
-#else
-	if(m_pHge->System_Initiate(wnid))
-#endif
+	if( m_bInit )
 	{
 		m_pHge->System_Start();
 	}
