@@ -18,7 +18,7 @@ public:
 
 	void Init( HWND wnid );
 	void InitState( HWND wnid );
-	void InitSystem( HWND wnid );
+	void DeviceStart( HWND wnid );
 	void Gfx_BeginScene();
 	void Gfx_EndScene();
 	void Gfx_EndScene( HWND hwnd );
@@ -28,5 +28,6 @@ public:
 	HGE* m_pHge;
 private:
 	std::map < std::string, HTEXTURE > m_mapTexture;
+	bool		m_bInit;
 };
 extern WNDLIB_EXPORT HGEDevice* g_pDevice;
